@@ -59,3 +59,5 @@ ETAPE 3, Créer une présentation PowerPoint d'une slide minimum pour chaque suj
 - Context du projet
 - Fonctionnalité
 - Choix technique
+
+- REDACTION DE LA SECTION "Spécifications fonctionelles" DU CAHIER DES CHARGES :
