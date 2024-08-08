@@ -1,0 +1,64 @@
+@startuml
+' Définition des classes
+class Utilisateur {
+    -String email
+    -String motDePasse
+    +seConnecter()
+    +seDeconnecter()
+    +reinitialiserMotDePasse()
+    +mettreAJourProfil()
+}
+
+class Eleve extends Utilisateur {
+    +voirEmploiDuTemps()
+    +sInscrireAuTutorat()
+}
+
+class Tuteur extends Utilisateur {
+    +gererSessions()
+    +creerTaches()
+    +modifierTaches()
+}
+
+class Tache {
+    -String description
+    -Date dateEcheance
+    +assignerAEleve()
+}
+
+class Message {
+    -String contenu
+    -Date horodatage
+    +envoyerMessage()
+    +epinglerMessage()
+}
+
+class EvenementCalendrier {
+    -Date date
+    -String description
+    +creerEvenement()
+    +modifierEvenement()
+    +annulerEvenement()
+}
+
+' Relations
+Utilisateur "1" *-- "0..*" Message : envoie >
+Utilisateur "1" *-- "0..*" Tache : attribue >
+Utilisateur "1" *-- "1" EvenementCalendrier : gere >
+Eleve "1" -- "0..*" Tache : possede >
+Tuteur "1" -- "0..*" Tache : cree >
+Eleve "1" -- "0..*" EvenementCalendrier : assiste >
+Tuteur "1" -- "0..*" EvenementCalendrier : planifie >
+
+' Note sur la sécurité et la gestion des messages
+note right of Message
+    Utiliser WebSockets pour la communication
+    en temps réel.
+end note
+
+note right of Utilisateur
+    Les mots de passe sont chiffrés.
+    JWT utilisé pour la session.
+end note
+
+@enduml
