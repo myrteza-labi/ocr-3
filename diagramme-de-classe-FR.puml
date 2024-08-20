@@ -44,7 +44,6 @@ class EvenementCalendrier {
 ' Relations
 Utilisateur "1" *-- "0..*" Message : envoie >
 Utilisateur "1" *-- "0..*" Tache : attribue >
-Utilisateur "1" *-- "1" EvenementCalendrier : gere >
 Eleve "1" -- "0..*" Tache : possede >
 Tuteur "1" -- "0..*" Tache : cree >
 Eleve "1" -- "0..*" EvenementCalendrier : assiste >
